@@ -1,0 +1,57 @@
+.tarjeta {
+  overflow: hidden;
+  height: 100%;
+  border: 1px solid #e0e9df;
+  border-radius: 1rem;
+  background: #fff;
+  box-shadow: 0 8px 20px rgba(39, 76, 49, 0.07);
+  text-align: center;
+  transition: transform 180ms ease, box-shadow 180ms ease;
+}
+
+.tarjeta:hover { transform: translateY(-3px); box-shadow: 0 15px 28px rgba(39, 76, 49, 0.13); }
+
+.imagen-contenedor { display: grid; height: 155px; place-items: center; padding: 1rem; background: linear-gradient(145deg, #edf7e9, #f9f5e7); }
+.contenido-tarjeta { display: flex; flex-direction: column; height: calc(100% - 155px); padding: 1.1rem; }
+.tarjeta h3 { margin-bottom: 0.25rem; color: #1f4931; font-size: 1.1rem; }
+.precio { margin-bottom: 0.85rem; color: #167045; font-size: 1.25rem; font-weight: 800; }
+
+.tarjeta button {
+  border: 0;
+  border-radius: 0.55rem;
+  padding: 0.65rem 0.75rem;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.tarjeta button:hover:not(:disabled) { transform: translateY(-1px); filter: brightness(1.04); }
+.btn-comprar {
+  width: 100%;
+  margin-top: auto;
+  background: #167045;
+  box-shadow: 0 5px 10px rgba(22, 112, 69, 0.18);
+}
+
+.tarjeta button:disabled {
+  background: #bdc6be;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+.estado-inventario { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.35rem; min-height: 2.05rem; margin-bottom: 0.85rem; }
+.disponible,
+.agotado,
+.stock-bajo { margin: 0; padding: 0.28rem 0.55rem; border-radius: 999px; font-size: 0.75rem; font-weight: 700; }
+.disponible { background: #e7f5ea; color: #267044; }
+.agotado { background: #fff0ef; color: #b34239; }
+.stock-bajo { background: #fff5db; color: #a36308; }
+
+.img-producto { width: 100%; height: 100%; object-fit: contain; }
+
+.acciones-admin { display: grid; grid-template-columns: 1fr 1fr; gap: 0.45rem; margin-top: 1rem; padding-top: 0.9rem; border-top: 1px solid #eef2ed; }
+.acciones-admin button { font-size: 0.75rem; }
+.tarjeta .btn-peligro { background: #ba4a40; }
+.tarjeta .btn-secundario { background: #587260; }
+.reposicion { grid-column: 1 / -1; display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; color: #607265; font-size: 0.75rem; font-weight: 700; text-align: left; }
+.reposicion input { width: 4.2rem; padding: 0.35rem 0.45rem; border: 1px solid #d3dfd2; border-radius: 0.4rem; color: #244831; }

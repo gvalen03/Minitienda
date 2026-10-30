@@ -1,0 +1,77 @@
+@base = http://localhost:8080/api/productos
+ 
+### 1. Listar todos los productos
+GET {{base}}
+ 
+### 2. Buscar un producto por id
+GET {{base}}/1
+ 
+### 3. Crear un producto
+POST {{base}}
+Content-Type: application/json
+ 
+{
+  "nombre": "Mango",
+  "precio": 8.9,
+  "stock": 10,
+  "imagen": "/imagenes/manzana.svg"
+}
+ 
+### 4. Actualizar el producto 5 (el mango recién creado)
+PUT {{base}}/5
+Content-Type: application/json
+ 
+{
+  "nombre": "Mango tommy",
+  "precio": 9.5,
+  "stock": 12,
+  "imagen": "/imagenes/manzana.svg"
+}
+ 
+### 5. Comprar una unidad de la pera
+POST {{base}}/3/comprar
+ 
+### 6. Intentar comprar la papaya (stock 0)
+POST {{base}}/4/comprar
+ 
+### 7. Crear un producto inválido
+POST {{base}}
+Content-Type: application/json
+ 
+{
+  "nombre": "",
+  "precio": -3,
+  "stock": 1
+}
+ 
+### 8. Eliminar el producto 5
+DELETE {{base}}/5
+
+### FUNCIONALIDAD B
+
+### B1. Reponer 5 unidades a la pera (esperado: HTTP 200, stock 7)
+POST {{base}}/3/reponer/5
+
+### B2. Reponer 30 unidades a la piña (esperado: HTTP 400)
+POST {{base}}/2/reponer/30
+
+### B3. Reponer 20 unidades a la piña tres veces (esperado: HTTP 200, 200 y 409)
+POST {{base}}/2/reponer/20
+
+### B3. Segunda reposición de 20 unidades a la piña (esperado: HTTP 200)
+POST {{base}}/2/reponer/20
+
+### B3. Tercera reposición de 20 unidades a la piña (esperado: HTTP 409)
+POST {{base}}/2/reponer/20
+
+### B4. Crear un producto con stock mínimo negativo (esperado: HTTP 400)
+POST {{base}}
+Content-Type: application/json
+
+{
+  "nombre": "Uva",
+  "precio": 4.5,
+  "stock": 5,
+  "stockMinimo": -1,
+  "imagen": "/imagenes/manzana.svg"
+}

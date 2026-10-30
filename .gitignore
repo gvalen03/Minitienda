@@ -38,7 +38,20 @@ yarn-error.log
 testem.log
 /typings
 __screenshots__/
+/.angular
+/coverage
+
+# Spring Boot
+/tienda-api/target
+
+# Base de datos H2
+/tienda-api/data/
+/tienda-api/data-respaldo-*/
 
 # System files
 .DS_Store
+.env
+.env.*
+!.env.example
+*.log
 Thumbs.db

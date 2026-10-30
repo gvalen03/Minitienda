@@ -1,0 +1,33 @@
+<div class="tarjeta">
+  <div class="imagen-contenedor">
+    <img [src]="producto().imagen" [alt]="producto().nombre" class="img-producto">
+  </div>
+  <div class="contenido-tarjeta">
+    <h3>{{ producto().nombre }}</h3>
+    <p class="precio">${{ producto().precio }}</p>
+
+    <div class="estado-inventario">
+      @if (producto().stock > 0) {
+        <p class="disponible">{{ producto().stock }} disponibles</p>
+        @if (producto().stock <= producto().stockMinimo) {
+          <p class="stock-bajo">¡Stock bajo!</p>
+        }
+      } @else {
+        <p class="agotado">Agotado</p>
+      }
+    </div>
+
+    <button class="btn-comprar" (click)="alHacerClic()" [disabled]="producto().stock === 0">
+      Comprar
+    </button>
+
+    <div class="acciones-admin">
+      <label class="reposicion">
+        <span>Reposición</span>
+        <input name="cantidad-reposicion" type="number" min="1" max="20" [(ngModel)]="cantidadReposicion">
+      </label>
+      <button class="btn-secundario" (click)="solicitarReposicion()">Reponer</button>
+      <button class="btn-peligro" (click)="eliminar.emit(producto().id)">Eliminar</button>
+    </div>
+  </div>
+</div>
